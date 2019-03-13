@@ -238,7 +238,9 @@
 
 - (double)get_latency_seconds
 {
-    return ((double)(kIJKAudioQueueNumberBuffers)) * _spec.samples / _spec.freq;
+    double ori = ((double)(kIJKAudioQueueNumberBuffers)) * _spec.samples / _spec.freq;
+    NSTimeInterval outputAudioLatency = AVAudioSession.sharedInstance.outputLatency;
+    return ori + outputAudioLatency;
 }
 
 static void IJKSDLAudioQueueOuptutCallback(void * inUserData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer) {
