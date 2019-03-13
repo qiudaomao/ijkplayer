@@ -527,12 +527,12 @@ inline static int getPlayerOption(IJKFFOptionCategory category)
         NSString *message = [NSString stringWithFormat:@"actual: %s\n expect: %s\n", actualVersion, expectVersion];
         NSLog(@"\n!!!!!!!!!!\n%@\n!!!!!!!!!!\n", message);
         if (showAlert) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Unexpected FFmpeg version"
-                                                                message:message
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-            [alertView show];
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Unexpected FFmpeg version"
+//                                                                message:message
+//                                                               delegate:nil
+//                                                      cancelButtonTitle:@"OK"
+//                                                      otherButtonTitles:nil];
+//            [alertView show];
         }
         return NO;
     }
@@ -549,12 +549,13 @@ inline static int getPlayerOption(IJKFFOptionCategory category)
         if (showAlert) {
             NSString *message = [NSString stringWithFormat:@"actual: %s\n expect: %s\n",
                                  actualVersion, expectVersion];
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Unexpected ijkplayer version"
-                                                                message:message
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-            [alertView show];
+            NSLog(@"==== error checkIfPlayerVersionMatch %@", message);
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Unexpected ijkplayer version"
+//                                                                message:message
+//                                                               delegate:nil
+//                                                      cancelButtonTitle:@"OK"
+//                                                      otherButtonTitles:nil];
+//            [alertView show];
         }
         return NO;
     }

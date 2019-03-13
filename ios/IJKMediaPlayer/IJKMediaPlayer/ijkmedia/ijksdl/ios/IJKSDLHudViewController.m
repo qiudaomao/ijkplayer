@@ -36,7 +36,7 @@
         _hudDataArray = [[NSMutableArray alloc] init];
 
         self.tableView.backgroundColor = [[UIColor alloc] initWithRed:.5f green:.5f blue:.5f alpha:.5f];
-        self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
+//        self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
