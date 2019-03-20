@@ -41,3 +41,8 @@ xcuserdata
 xcshareddata
 *.xccheckout
 
+GPATH
+GTAGS
+GRTAGS
+cscope.files
+tags

@@ -255,6 +255,7 @@
 		E96996A822380C66000BB13C /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E96996A622380C66000BB13C /* libssl.a */; };
 		E96996A922380C66000BB13C /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E96996A722380C66000BB13C /* libcrypto.a */; };
 		E96996AA22380CA7000BB13C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E969969E22380949000BB13C /* libz.tbd */; };
+		E999C0F7223B8D4700EDF799 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E999C0F6223B8D4700EDF799 /* libiconv.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -461,6 +462,7 @@
 		E969969E22380949000BB13C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		E96996A622380C66000BB13C /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../build/universal/lib/libssl.a; sourceTree = "<group>"; };
 		E96996A722380C66000BB13C /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../build/universal/lib/libcrypto.a; sourceTree = "<group>"; };
+		E999C0F6223B8D4700EDF799 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.1.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +470,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E999C0F7223B8D4700EDF799 /* libiconv.tbd in Frameworks */,
 				E96996AA22380CA7000BB13C /* libz.tbd in Frameworks */,
 				E96996A822380C66000BB13C /* libssl.a in Frameworks */,
 				E96996A922380C66000BB13C /* libcrypto.a in Frameworks */,
@@ -653,6 +656,7 @@
 		E6903EBB17EAF6C500CFD954 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E999C0F6223B8D4700EDF799 /* libiconv.tbd */,
 				E96996A722380C66000BB13C /* libcrypto.a */,
 				E96996A622380C66000BB13C /* libssl.a */,
 				E969969E22380949000BB13C /* libz.tbd */,
