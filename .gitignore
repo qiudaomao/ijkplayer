@@ -5,6 +5,7 @@ android/ffmpeg-*
 android/openssl-*
 ios/ffmpeg-*
 ios/openssl-*
+ios/libsmbclient
 extra
 .DS_Store
 ijkmedia/ijkyuv/

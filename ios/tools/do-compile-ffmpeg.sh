@@ -43,6 +43,8 @@ if [ -z "$FF_ARCH" ]; then
     exit 1
 fi
 
+export PKG_CONFIG_PATH="/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/pkgconfig"
+echo "PKG_CONFIG_PATH: $PKG_CONFIG_PATH"
 
 FF_BUILD_ROOT=`pwd`
 FF_TAGET_OS="darwin"
@@ -187,7 +189,7 @@ FF_XCRUN_SDK=`echo $FF_XCRUN_PLATFORM | tr '[:upper:]' '[:lower:]'`
 FF_XCRUN_CC="xcrun -sdk $FF_XCRUN_SDK clang"
 
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS $FFMPEG_CFG_CPU"
-
+MY_LIB_PATH="/Users/zfu/proj/website/LazyCat/LazyCatTV/DanMuPlayer/dependency/mpv/lib"
 FFMPEG_CFLAGS=
 FFMPEG_CFLAGS="$FFMPEG_CFLAGS -arch $FF_ARCH"
 FFMPEG_CFLAGS="$FFMPEG_CFLAGS $FF_XCRUN_OSVERSION"
@@ -212,6 +214,24 @@ if [ -f "${FFMPEG_DEP_OPENSSL_LIB}/libssl.a" ]; then
     FFMPEG_DEP_LIBS="$FFMPEG_CFLAGS -L${FFMPEG_DEP_OPENSSL_LIB} -lssl -lcrypto"
 else
     echo "do without openssl"
+fi
+
+#--------------------
+echo "\n--------------------"
+echo "[*] check libsmbclient"
+echo "----------------------"
+FFMPEG_DEP_LIBSMBCLIENT_INC=$FF_BUILD_ROOT/libsmbclient
+FFMPEG_DEP_LIBSMBCLIENT_LIB=$FF_BUILD_ROOT/libsmbclient
+#--------------------
+# with libsmbclient
+if [ -f "${FFMPEG_DEP_LIBSMBCLIENT_LIB}/libsmbclient.a" ]; then
+    echo "do with libsmbclient"
+    FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-protocol=libsmbclient --enable-libsmbclient --enable-gpl --enable-nonfree --enable-version3"
+
+    FFMPEG_CFLAGS="$FFMPEG_CFLAGS -I${FFMPEG_DEP_LIBSMBCLIENT_INC}"
+    FFMPEG_DEP_LIBS="$FFMPEG_DEP_LIBS -I${FFMPEG_DEP_LIBSMBCLIENT_INC} -L${FFMPEG_DEP_LIBSMBCLIENT_LIB} -lsmbclient -ltalloc -ltdb -ltevent -lwbclient -framework Foundation -liconv -lresolv"
+else
+    echo "do without libsmbclient"
 fi
 
 #--------------------

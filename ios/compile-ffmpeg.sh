@@ -42,7 +42,7 @@ echo_archs() {
     echo "FF_ALL_ARCHS = $FF_ALL_ARCHS"
 }
 
-FF_LIBS="libavcodec libavfilter libavformat libavutil libswscale libswresample"
+FF_LIBS="libavcodec libavfilter libavformat libavutil libswscale libswresample libavdevice"
 do_lipo_ffmpeg () {
     LIB_FILE=$1
     LIPO_FLAGS=
