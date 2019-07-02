@@ -43,9 +43,6 @@ if [ -z "$FF_ARCH" ]; then
     exit 1
 fi
 
-export PKG_CONFIG_PATH="/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/pkgconfig"
-echo "PKG_CONFIG_PATH: $PKG_CONFIG_PATH"
-
 FF_BUILD_ROOT=`pwd`
 FF_TAGET_OS="darwin"
 
@@ -61,6 +58,12 @@ FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS $COMMON_FF_CFG_FLAGS"
 # FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --disable-armv5te"
 # FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --disable-armv6"
 # FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --disable-armv6t2"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-fontconfig"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libfreetype"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libfribidi"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libass"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libbluray"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libssh"
 
 # Advanced options (experts only):
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-cross-compile"
@@ -229,9 +232,27 @@ if [ -f "${FFMPEG_DEP_LIBSMBCLIENT_LIB}/libsmbclient.a" ]; then
     FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-protocol=libsmbclient --enable-libsmbclient --enable-gpl --enable-nonfree --enable-version3"
 
     FFMPEG_CFLAGS="$FFMPEG_CFLAGS -I${FFMPEG_DEP_LIBSMBCLIENT_INC}"
-    FFMPEG_DEP_LIBS="$FFMPEG_DEP_LIBS -I${FFMPEG_DEP_LIBSMBCLIENT_INC} -L${FFMPEG_DEP_LIBSMBCLIENT_LIB} -lsmbclient -ltalloc -ltdb -ltevent -lwbclient -framework Foundation -liconv -lresolv"
+    FFMPEG_DEP_LIBS="$FFMPEG_DEP_LIBS -L${FFMPEG_DEP_LIBSMBCLIENT_LIB} -lsmbclient -ltalloc -ltdb -ltevent -lwbclient -framework Foundation -liconv -lresolv"
 else
     echo "do without libsmbclient"
+fi
+
+#--------------------
+echo "\n--------------------"
+echo "[*] check libssh"
+echo "----------------------"
+FFMPEG_DEP_LIBSSH_INC=/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/include
+FFMPEG_DEP_LIBSSH_LIB=/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/lib
+#--------------------
+# with libssh
+if [ -f "${FFMPEG_DEP_LIBSSH_LIB}/libssh.dylib" ]; then
+    echo "do with libssh"
+    FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS"
+
+    FFMPEG_CFLAGS="$FFMPEG_CFLAGS -I${FFMPEG_DEP_LIBSSH_INC}"
+    FFMPEG_DEP_LIBS="$FFMPEG_DEP_LIBS -L${FFMPEG_DEP_LIBSSH_LIB} -lssh"
+else
+    echo "do without libssh"
 fi
 
 #--------------------
@@ -256,6 +277,9 @@ if [ -f "./config.h" ]; then
     echo 'reuse configure'
 else
     echo "config: $FFMPEG_CFG_FLAGS $FF_XCRUN_CC"
+    export PKG_CONFIG_PATH="/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/pkgconfig"
+    echo "PKG_CONFIG_PATH: $PKG_CONFIG_PATH"
+
     ./configure \
         $FFMPEG_CFG_FLAGS \
         --cc="$FF_XCRUN_CC" \
@@ -271,7 +295,7 @@ echo "\n--------------------"
 echo "[*] compile ffmpeg"
 echo "--------------------"
 cp config.* $FF_BUILD_PREFIX
-make -j3 $FF_GASPP_EXPORT
+make -j8 $FF_GASPP_EXPORT
 make install
 mkdir -p $FF_BUILD_PREFIX/include/libffmpeg
 cp -f config.h $FF_BUILD_PREFIX/include/libffmpeg/config.h
