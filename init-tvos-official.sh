@@ -16,10 +16,10 @@
 # limitations under the License.
 #
 
-# IJK_FFMPEG_UPSTREAM=git://git.videolan.org/ffmpeg.git
-IJK_FFMPEG_UPSTREAM=https://github.com/Bilibili/FFmpeg.git
-IJK_FFMPEG_FORK=https://github.com/Bilibili/FFmpeg.git
-IJK_FFMPEG_COMMIT=ff4.0--ijk0.8.25--20181123--001
+IJK_FFMPEG_UPSTREAM=https://github.com/qiudaomao/ffmpeg-ijk-mpv.git
+#IJK_FFMPEG_UPSTREAM=https://github.com/FFmpeg/FFmpeg.git
+IJK_FFMPEG_FORK=https://github.com/qiudaomao/ffmpeg-ijk-mpv.git
+IJK_FFMPEG_COMMIT=2acb6789b2a4e6bc7d0c5ce916a23a0a5ea80ca9
 IJK_FFMPEG_LOCAL_REPO=extra/ffmpeg
 
 IJK_GASP_UPSTREAM=https://github.com/Bilibili/gas-preprocessor.git

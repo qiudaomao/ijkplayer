@@ -240,7 +240,6 @@
 		E6DBD3891C8941EB0058E4FB /* IJKFFMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = E6DBD3871C8941EB0058E4FB /* IJKFFMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6DBD38A1C8941EB0058E4FB /* IJKFFMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DBD3881C8941EB0058E4FB /* IJKFFMonitor.m */; };
 		E6E1B9A81C741F72000C6C72 /* renderer_yuv420sp_vtb.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E1B9A71C741F72000C6C72 /* renderer_yuv420sp_vtb.m */; };
-		E9309EC7224CCB7A00CDB526 /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9309EC6224CCB7A00CDB526 /* libavdevice.a */; };
 		E9309ED8224E69AD00CDB526 /* bluray.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9309ED7224E69AC00CDB526 /* bluray.a */; };
 		E9309EDC224E69C700CDB526 /* freetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9309EDB224E69C700CDB526 /* freetype.a */; };
 		E9309EDE224E69D500CDB526 /* png.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9309EDD224E69D500CDB526 /* png.a */; };
@@ -493,7 +492,6 @@
 				E999C0F7223B8D4700EDF799 /* libiconv.tbd in Frameworks */,
 				E96996AA22380CA7000BB13C /* libz.tbd in Frameworks */,
 				E96996A822380C66000BB13C /* libssl.a in Frameworks */,
-				E9309EC7224CCB7A00CDB526 /* libavdevice.a in Frameworks */,
 				E96996A922380C66000BB13C /* libcrypto.a in Frameworks */,
 				E96996A022380C66000BB13C /* libavcodec.a in Frameworks */,
 				E96996A122380C66000BB13C /* libavfilter.a in Frameworks */,

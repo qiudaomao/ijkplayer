@@ -64,7 +64,7 @@ do_lipo_all () {
         do_lipo "$FF_LIB.a";
     done
 
-    cp -R $UNI_BUILD_ROOT/build/openssl-armv7/output/include $UNI_BUILD_ROOT/build/universal/
+    cp -R $UNI_BUILD_ROOT/build/openssl-arm64/output/include $UNI_BUILD_ROOT/build/universal/
 }
 
 #----------

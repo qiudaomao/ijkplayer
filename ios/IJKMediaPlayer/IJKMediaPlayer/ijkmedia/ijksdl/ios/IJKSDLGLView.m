@@ -318,7 +318,7 @@ typedef NS_ENUM(NSInteger, IJKSDLGLViewApplicationState) {
 
     if ([[NSThread currentThread] isMainThread]) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            if (_isRenderBufferInvalidated)
+            if (self->_isRenderBufferInvalidated)
                 [self display:nil];
         });
     } else {

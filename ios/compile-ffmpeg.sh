@@ -42,7 +42,8 @@ echo_archs() {
     echo "FF_ALL_ARCHS = $FF_ALL_ARCHS"
 }
 
-FF_LIBS="libavcodec libavfilter libavformat libavutil libswscale libswresample libavdevice"
+FF_LIBS="libavcodec libavfilter libavformat libavutil libswscale libswresample"
+# libavdevice
 do_lipo_ffmpeg () {
     LIB_FILE=$1
     LIPO_FLAGS=
@@ -56,6 +57,8 @@ do_lipo_ffmpeg () {
         fi
     done
 
+    echo "xcrun lipo -create $LIPO_FLAGS -output $UNI_BUILD_ROOT/build/universal/lib/$LIB_FILE"
+    echo "xcrun lipo -info $UNI_BUILD_ROOT/build/universal/lib/$LIB_FILE"
     xcrun lipo -create $LIPO_FLAGS -output $UNI_BUILD_ROOT/build/universal/lib/$LIB_FILE
     xcrun lipo -info $UNI_BUILD_ROOT/build/universal/lib/$LIB_FILE
 }
