@@ -6,6 +6,9 @@ android/openssl-*
 ios/ffmpeg-*
 ios/openssl-*
 ios/libsmbclient
+macos/ffmpeg-*
+macos/openssl-*
+macos/libsmbclient
 extra
 .DS_Store
 ijkmedia/ijkyuv/
@@ -47,3 +50,4 @@ GTAGS
 GRTAGS
 cscope.files
 tags
+._*
