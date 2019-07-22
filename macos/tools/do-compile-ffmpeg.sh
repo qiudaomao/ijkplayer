@@ -42,6 +42,7 @@ if [ -z "$FF_ARCH" ]; then
     echo "You must specific an architecture 'armv7, armv7s, arm64, i386, x86_64, ...'.\n"
     exit 1
 fi
+export SYSROOT="$(xcodebuild -sdk macosx -version Path)"
 
 FF_BUILD_ROOT=`pwd`
 FF_TAGET_OS="darwin"
@@ -64,6 +65,7 @@ FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libfribidi"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libass"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libbluray"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libssh"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libaom"
 
 # Advanced options (experts only):
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-cross-compile"
@@ -120,7 +122,7 @@ echo "[*] config arch $FF_ARCH"
 echo "===================="
 
 FF_BUILD_NAME="unknown"
-FF_XCRUN_PLATFORM="appleTVOS"
+FF_XCRUN_PLATFORM="macosx"
 FF_XCRUN_OSVERSION=
 FF_GASPP_EXPORT=
 FF_DEP_OPENSSL_INC=
@@ -191,6 +193,7 @@ echo "[*] configurate ffmpeg"
 echo "--------------------"
 FF_XCRUN_SDK=`echo $FF_XCRUN_PLATFORM | tr '[:upper:]' '[:lower:]'`
 FF_XCRUN_CC="xcrun -sdk $FF_XCRUN_SDK clang"
+export CC=${FF_XCRUN_CC}
 
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS $FFMPEG_CFG_CPU"
 MY_LIB_PATH="/Users/zfu/proj/website/LazyCat/LazyCatTV/DanMuPlayer/dependency/mpv/lib"
@@ -242,8 +245,8 @@ fi
 echo "\n--------------------"
 echo "[*] check libssh"
 echo "----------------------"
-FFMPEG_DEP_LIBSSH_INC=/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/include
-FFMPEG_DEP_LIBSSH_LIB=/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/lib
+FFMPEG_DEP_LIBSSH_INC=/Users/zfu/proj/github/tvos.mpv.player/contrib/macos-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/include
+FFMPEG_DEP_LIBSSH_LIB=/Users/zfu/proj/github/tvos.mpv.player/contrib/macos-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/lib
 #--------------------
 # with libssh
 if [ -f "${FFMPEG_DEP_LIBSSH_LIB}/libssh.dylib" ]; then
@@ -278,6 +281,11 @@ if [ -f "./config.h" ]; then
     echo 'reuse configure'
 else
     echo "config: $FFMPEG_CFG_FLAGS $FF_XCRUN_CC"
+    #export CFLAGS=" -isysroot ${SYSROOT} ${FFMPEG_CFG_FLAGS}"
+    #echo "CFLAGS: ${FFMPEG_CFG_FLAGS}"
+    echo "CXXFLAGS: ${FFMPEG_CFG_FLAGS}"
+    #export LDFLAGS="-arch x86_64 -isysroot ${SYSROOT} -Wl,-macosx-version-min,10.14 -fembed-bitcode"
+    echo "LDFLAGS: ${FFMPEG_LDFLAGS}"
     export PKG_CONFIG_PATH="/Users/zfu/proj/github/tvos.mpv.player/contrib/macos-ffmpeg/prebuilt/ios-${FF_ARCH}-macosx-darwin/pkgconfig"
     echo "PKG_CONFIG_PATH: $PKG_CONFIG_PATH"
 
@@ -296,7 +304,7 @@ echo "\n--------------------"
 echo "[*] compile ffmpeg"
 echo "--------------------"
 cp config.* $FF_BUILD_PREFIX
-make -j8 $FF_GASPP_EXPORT
+make -j6 $FF_GASPP_EXPORT
 make install
 mkdir -p $FF_BUILD_PREFIX/include/libffmpeg
 cp -f config.h $FF_BUILD_PREFIX/include/libffmpeg/config.h

@@ -64,6 +64,7 @@ FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libfribidi"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libass"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libbluray"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libssh"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libaom"
 
 # Advanced options (experts only):
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-cross-compile"
