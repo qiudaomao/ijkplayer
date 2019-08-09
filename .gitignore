@@ -9,6 +9,9 @@ ios/libsmbclient
 macos/ffmpeg-*
 macos/openssl-*
 macos/libsmbclient
+macCatalyst/ffmpeg-*
+macCatalyst/openssl-*
+macCatalyst/libsmbclient
 extra
 .DS_Store
 ijkmedia/ijkyuv/
