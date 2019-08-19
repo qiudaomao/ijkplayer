@@ -12,6 +12,9 @@ macos/libsmbclient
 macCatalyst/ffmpeg-*
 macCatalyst/openssl-*
 macCatalyst/libsmbclient
+tvos/ffmpeg-*
+tvos/openssl-*
+tvos/libsmbclient
 extra
 .DS_Store
 ijkmedia/ijkyuv/
