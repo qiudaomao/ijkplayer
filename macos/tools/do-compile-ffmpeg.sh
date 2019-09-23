@@ -65,7 +65,12 @@ FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libfribidi"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libass"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libbluray"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libssh"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libnfs"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libdsm"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libsmb2"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libaom"
+# FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-ffmpeg"
+# FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-ffplay"
 
 # Advanced options (experts only):
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-cross-compile"
@@ -245,11 +250,12 @@ fi
 echo "\n--------------------"
 echo "[*] check libssh"
 echo "----------------------"
-FFMPEG_DEP_LIBSSH_INC=/Users/zfu/proj/github/tvos.mpv.player/contrib/macos-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/include
-FFMPEG_DEP_LIBSSH_LIB=/Users/zfu/proj/github/tvos.mpv.player/contrib/macos-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/lib
+FFMPEG_DEP_LIBSSH_INC=/Users/zfu/proj/github/tvos.mpv.player/contrib/macos-ffmpeg/prebuilt/ios-${FF_ARCH}-macosx-darwin/libssh/include
+FFMPEG_DEP_LIBSSH_LIB=/Users/zfu/proj/github/tvos.mpv.player/contrib/macos-ffmpeg/prebuilt/ios-${FF_ARCH}-macosx-darwin/libssh/lib
 #--------------------
 # with libssh
-if [ -f "${FFMPEG_DEP_LIBSSH_LIB}/libssh.dylib" ]; then
+echo "check file ${FFMPEG_DEP_LIBSSH_LIB}/libssh.a"
+if [ -f "${FFMPEG_DEP_LIBSSH_LIB}/libssh.a" ]; then
     echo "do with libssh"
     FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS"
 
@@ -257,6 +263,25 @@ if [ -f "${FFMPEG_DEP_LIBSSH_LIB}/libssh.dylib" ]; then
     FFMPEG_DEP_LIBS="$FFMPEG_DEP_LIBS -L${FFMPEG_DEP_LIBSSH_LIB} -lssh"
 else
     echo "do without libssh"
+fi
+
+#--------------------
+echo "\n--------------------"
+echo "[*] check libnfs"
+echo "----------------------"
+FFMPEG_DEP_LIBNFS_INC=/Users/zfu/proj/github/tvos.mpv.player/contrib/macos-ffmpeg/prebuilt/ios-${FF_ARCH}-macosx-darwin/libnfs/include
+FFMPEG_DEP_LIBNFS_LIB=/Users/zfu/proj/github/tvos.mpv.player/contrib/macos-ffmpeg/prebuilt/ios-${FF_ARCH}-macosx-darwin/libnfs/lib
+#--------------------
+echo "check file ${FFMPEG_DEP_LIBNFS_LIB}/libnfs.a"
+# with libssh
+if [ -f "${FFMPEG_DEP_LIBNFS_LIB}/libnfs.a" ]; then
+    echo "do with libnfs"
+    FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS"
+
+    FFMPEG_CFLAGS="$FFMPEG_CFLAGS -I${FFMPEG_DEP_LIBNFS_INC}"
+    FFMPEG_DEP_LIBS="$FFMPEG_DEP_LIBS -L${FFMPEG_DEP_LIBNFS_LIB} -lnfs"
+else
+    echo "do without libnfs"
 fi
 
 #--------------------

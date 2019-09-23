@@ -273,6 +273,10 @@
 		E971D41722D1E2D70075C9C5 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E96996A622380C66000BB13C /* libssl.a */; };
 		E971D41822D1E2D70075C9C5 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E653C6F31BCE5A750016835A /* libswresample.a */; };
 		E971D41922D1E2D70075C9C5 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E653C6F41BCE5A750016835A /* libswscale.a */; };
+		E97AC8B82324942100287A52 /* libdsm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C7C4B122CB799B00C73238 /* libdsm.a */; };
+		E97AC8B92324942100287A52 /* libtasn1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C7C4B722CB799B00C73238 /* libtasn1.a */; };
+		E97AC8BB2324944200287A52 /* libsmb2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E97AC8BA2324942100287A52 /* libsmb2.a */; };
+		E97AC8BD2324945E00287A52 /* libnfs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E97AC8BC2324944300287A52 /* libnfs.a */; };
 		E9802B2D22E16F2D0024AA57 /* libaom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9802B2C22E16F210024AA57 /* libaom.a */; };
 		E9802B2E22E16F480024AA57 /* libaom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9802B2C22E16F210024AA57 /* libaom.a */; };
 		E999C0F7223B8D4700EDF799 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E999C0F6223B8D4700EDF799 /* libiconv.tbd */; };
@@ -489,6 +493,8 @@
 		E969969E22380949000BB13C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		E96996A622380C66000BB13C /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../build/universal/lib/libssl.a; sourceTree = "<group>"; };
 		E96996A722380C66000BB13C /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../build/universal/lib/libcrypto.a; sourceTree = "<group>"; };
+		E97AC8BA2324942100287A52 /* libsmb2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsmb2.a; path = ../../../dependency/mpv/lib/libsmb2.a; sourceTree = "<group>"; };
+		E97AC8BC2324944300287A52 /* libnfs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnfs.a; path = ../../../dependency/mpv/lib/libnfs.a; sourceTree = "<group>"; };
 		E9802B2C22E16F210024AA57 /* libaom.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaom.a; path = ../../../../../../../../../../System/Volumes/Data/Users/zfu/proj/website/LazyCat/BytePlayer/DanMuPlayer/dependency/mpv/lib/libaom.a; sourceTree = "<group>"; };
 		E999C0F6223B8D4700EDF799 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.1.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		E9C7C46722CB673C00C73238 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = ../../../dependency/mpv/lib/libfreetype.a; sourceTree = "<group>"; };
@@ -526,6 +532,7 @@
 				E971D41222D1E2D70075C9C5 /* libavcodec.a in Frameworks */,
 				E971D41322D1E2D70075C9C5 /* libavfilter.a in Frameworks */,
 				E971D41422D1E2D70075C9C5 /* libavformat.a in Frameworks */,
+				E97AC8BB2324944200287A52 /* libsmb2.a in Frameworks */,
 				E971D41522D1E2D70075C9C5 /* libavutil.a in Frameworks */,
 				E971D41622D1E2D70075C9C5 /* libcrypto.a in Frameworks */,
 				E971D41722D1E2D70075C9C5 /* libssl.a in Frameworks */,
@@ -542,15 +549,18 @@
 				E971D40922D1E2B70075C9C5 /* libharfbuzz.a in Frameworks */,
 				E971D40A22D1E2B70075C9C5 /* libnettle.a in Frameworks */,
 				E971D40B22D1E2B70075C9C5 /* libpng.a in Frameworks */,
+				E97AC8B92324942100287A52 /* libtasn1.a in Frameworks */,
 				E971D40C22D1E2B70075C9C5 /* libpng16.a in Frameworks */,
 				E971D40D22D1E2B70075C9C5 /* libssh.a in Frameworks */,
 				E971D40E22D1E2B70075C9C5 /* libssh2.a in Frameworks */,
+				E97AC8BD2324945E00287A52 /* libnfs.a in Frameworks */,
 				E971D40F22D1E2B70075C9C5 /* libtasn1.a in Frameworks */,
 				E9802B2E22E16F480024AA57 /* libaom.a in Frameworks */,
 				E971D41022D1E2B70075C9C5 /* libuchardet.a in Frameworks */,
 				E971D41122D1E2B70075C9C5 /* libuuid.a in Frameworks */,
 				E9309EE1224E6A0A00CDB526 /* libxml2.tbd in Frameworks */,
 				E999C0F7223B8D4700EDF799 /* libiconv.tbd in Frameworks */,
+				E97AC8B82324942100287A52 /* libdsm.a in Frameworks */,
 				E96996AA22380CA7000BB13C /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,6 +739,8 @@
 		E6903EBB17EAF6C500CFD954 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E97AC8BC2324944300287A52 /* libnfs.a */,
+				E97AC8BA2324942100287A52 /* libsmb2.a */,
 				E9802B2C22E16F210024AA57 /* libaom.a */,
 				E9C7C4B622CB799B00C73238 /* libarchive.a */,
 				E9C7C4B022CB799B00C73238 /* libcurl.a */,

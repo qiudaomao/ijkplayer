@@ -42,8 +42,7 @@ FF_ALL_ARCHS_IOS6_SDK="armv7 armv7s i386"
 FF_ALL_ARCHS_IOS7_SDK="armv7 armv7s arm64 i386 x86_64"
 FF_ALL_ARCHS_IOS8_SDK="armv7 arm64 i386 x86_64"
 FF_ALL_ARCHS_TVOS_SDK="arm64 x86_64"
-FF_ALL_ARCHS_MACOS_SDK="x86_64"
-FF_ALL_ARCHS=$FF_ALL_ARCHS_MACOS_SDK
+FF_ALL_ARCHS=$FF_ALL_ARCHS_TVOS_SDK
 FF_TARGET=$1
 
 function echo_ffmpeg_version() {
@@ -61,8 +60,8 @@ function pull_common() {
 
 function pull_fork() {
     echo "== pull ffmpeg fork $1 =="
-    sh $TOOLS/pull-repo-ref.sh $IJK_FFMPEG_FORK macos/ffmpeg-$1 ${IJK_FFMPEG_LOCAL_REPO}
-    cd macos/ffmpeg-$1
+    sh $TOOLS/pull-repo-ref.sh $IJK_FFMPEG_FORK ios/ffmpeg-$1 ${IJK_FFMPEG_LOCAL_REPO}
+    cd ios/ffmpeg-$1
     git checkout ${IJK_FFMPEG_COMMIT} -B ijkplayer
     cd -
 }
@@ -75,7 +74,7 @@ function pull_fork_all() {
 }
 
 function sync_ff_version() {
-    sed -i '' "s/static const char \*kIJKFFRequiredFFmpegVersion\ \=\ .*/static const char *kIJKFFRequiredFFmpegVersion = \"${IJK_FFMPEG_COMMIT}\";/g" macos/IJKMediaPlayer/IJKMediaPlayer/IJKFFMoviePlayerController.m
+    sed -i '' "s/static const char \*kIJKFFRequiredFFmpegVersion\ \=\ .*/static const char *kIJKFFRequiredFFmpegVersion = \"${IJK_FFMPEG_COMMIT}\";/g" ios/IJKMediaPlayer/IJKMediaPlayer/IJKFFMoviePlayerController.m
 }
 
 #----------

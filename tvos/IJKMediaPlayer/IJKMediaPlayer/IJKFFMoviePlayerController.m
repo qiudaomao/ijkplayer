@@ -34,7 +34,7 @@
 #import "ijkioapplication.h"
 #include "string.h"
 
-static const char *kIJKFFRequiredFFmpegVersion = "2acb6789b2a4e6bc7d0c5ce916a23a0a5ea80ca9";
+static const char *kIJKFFRequiredFFmpegVersion = "vijk_mpv_nfs_smb2_dsm";
 
 // It means you didn't call shutdown if you found this object leaked.
 @interface IJKWeakHolder : NSObject

@@ -64,6 +64,9 @@ FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libfribidi"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libass"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libbluray"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libssh"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libdsm"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libsmb2"
+FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libnfs"
 FFMPEG_CFG_FLAGS="$FFMPEG_CFG_FLAGS --enable-libaom"
 
 # Advanced options (experts only):
@@ -242,8 +245,8 @@ fi
 echo "\n--------------------"
 echo "[*] check libssh"
 echo "----------------------"
-FFMPEG_DEP_LIBSSH_INC=/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/include
-FFMPEG_DEP_LIBSSH_LIB=/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/lib
+FFMPEG_DEP_LIBSSH_INC=/Users/zfu/proj/github/tvos.mpv.player/contrib/tvos-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/include
+FFMPEG_DEP_LIBSSH_LIB=/Users/zfu/proj/github/tvos.mpv.player/contrib/tvos-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/libssh/lib
 #--------------------
 # with libssh
 if [ -f "${FFMPEG_DEP_LIBSSH_LIB}/libssh.dylib" ]; then
@@ -278,7 +281,7 @@ if [ -f "./config.h" ]; then
     echo 'reuse configure'
 else
     echo "config: $FFMPEG_CFG_FLAGS $FF_XCRUN_CC"
-    export PKG_CONFIG_PATH="/Users/zfu/proj/github/tvos.mpv.player/contrib/mobile-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/pkgconfig"
+    export PKG_CONFIG_PATH="/Users/zfu/proj/github/tvos.mpv.player/contrib/tvos-ffmpeg/prebuilt/ios-${FF_ARCH}-ios-darwin/pkgconfig"
     echo "PKG_CONFIG_PATH: $PKG_CONFIG_PATH"
 
     ./configure \
